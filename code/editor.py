@@ -14,6 +14,7 @@ class Editor:
         # Navigation
         self.origin = vector()
         self.pan_active = False
+        self.pan_offset = vector()
 
     # INPUT SECTION
     def event_loop(self):
@@ -29,12 +30,14 @@ class Editor:
         # Middle mouse button presses / released
         if event.type == pygame.MOUSEBUTTONDOWN and mouse_buttons()[1]:
             self.pan_active = True
+            self.pan_offset = vector(mouse_pos()) - self.origin
+
         if not mouse_buttons()[1]:
             self.pan_active = False
 
         # panning update
         if self.pan_active:
-            self.origin = mouse_pos()
+            self.origin = vector(mouse_pos()) - self.pan_offset
 
     def run(self, dt):
         self.display_surface.fill('white')
