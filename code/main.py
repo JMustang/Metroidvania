@@ -16,7 +16,7 @@ class Main:
         self.editor = Editor()
 
         # cursor
-        surf = load('../graphics/cursors/mouse2.png').convert_alpha()
+        surf = load('../graphics/cursors/mouse.png').convert_alpha()
         cursor = pygame.cursors.Cursor((0, 0), surf)
         pygame.mouse.set_cursor(cursor)
 
