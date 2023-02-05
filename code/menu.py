@@ -32,3 +32,14 @@ class Menu:
         pygame.draw.rect(self.display_surface, 'blue', self.coin_button_rect)
         pygame.draw.rect(self.display_surface, 'brown', self.enemy_button_rect)
         pygame.draw.rect(self.display_surface, 'purple', self.palm_button_rect)
+
+class Button(pygame.sprite.Sprite):
+    def __init__(self, rect, group, items, items_alt = None):
+        super().__init__(group)
+        self.image = pygame.Surface(rect.size)
+        self.rect = rect
+
+        # Items
+        self.items = {'main': items, 'alt': items_alt}
+        self.index = 0
+        self.main_active = True
