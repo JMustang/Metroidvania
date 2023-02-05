@@ -1,10 +1,19 @@
 import pygame
 from settings import *
+from pygame.image import load
 
 class Menu:
     def __init__(self):
         self.display_surface = pygame.display.get_surface()
+        self.create_data()
         self.create_button()
+
+    def create_data(self):
+        self.menu_surfs = {}
+        for key, value in EDITOR_DATA.items():
+            if value['menu']:
+                if not value['menu'] in self.menu_surfs:
+                    self.menu_surfs[value['menu']] = [load('menu_surf')]
 
     def create_button(self):
 
