@@ -1,10 +1,23 @@
 import pygame
 from settings import *
+from pygame.image import load
 
 class Menu:
     def __init__(self):
         self.display_surface = pygame.display.get_surface()
+        self.create_data()
         self.create_button()
+
+    def create_data(self):
+        self.menu_surfs = {}
+        for key, value in EDITOR_DATA.items():
+            if value['menu']:
+                if not value['menu'] in self.menu_surfs:
+                    self.menu_surfs[value['menu']] = [(key, load(value['menu_surf']))]
+                # else:
+                #     self.menu_surfs[value['menu']].append((key, load(value['menu_surf'])))
+
+
 
     def create_button(self):
 
@@ -32,3 +45,14 @@ class Menu:
         pygame.draw.rect(self.display_surface, 'blue', self.coin_button_rect)
         pygame.draw.rect(self.display_surface, 'brown', self.enemy_button_rect)
         pygame.draw.rect(self.display_surface, 'purple', self.palm_button_rect)
+
+class Button(pygame.sprite.Sprite):
+    def __init__(self, rect, group, items, items_alt = None):
+        super().__init__(group)
+        self.image = pygame.Surface(rect.size)
+        self.rect = rect
+
+        # Items
+        self.items = {'main': items, 'alt': items_alt}
+        self.index = 0
+        self.main_active = True
