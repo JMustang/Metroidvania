@@ -41,6 +41,14 @@ class Menu:
             )
         self.palm_button_rect = generic_button_rect.move(0, self.rect.width / 2).inflate(-button_margin, -button_margin)
 
+        # create the buttons
+        self.buttons = pygame.sprite.Group()
+        Button(self.tile_button_rect, self.buttons, self.menu_surfs['terrain'])
+        Button(self.coin_button_rect, self.buttons, self.menu_surfs['coin'])
+        Button(self.enemy_button_rect, self.buttons, self.menu_surfs['enemy'])
+        Button(self.palm_button_rect, self.buttons, self.menu_surfs['palm fg'], self.menu_surfs['palm bg'])
+
+
     def display(self):
         # pygame.draw.rect(self.display_surface, 'red', self.rect)
         pygame.draw.rect(self.display_surface, 'yellow', self.tile_button_rect)
