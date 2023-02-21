@@ -57,3 +57,6 @@ SEA_COLOR = '#92a9ce'
 HORIZON_COLOR = '#f5f1de'
 HORIZON_TOP_COLOR = '#d1aa9d'
 LINE_COLOR = 'black'
+
+
+BUTTON_BG_COLOR = '#33323d'

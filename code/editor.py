@@ -20,7 +20,7 @@ class Editor:
 
         # Support lines
         self.support_line_surf = pygame.Surface((WINDOW_WIDTH, WINDOW_HEIGHT))
-        self.support_line_surf.set_colorkey('green')
+        self.support_line_surf.set_colorkey('red')
         self.support_line_surf.set_alpha(30)
 
         # Selection

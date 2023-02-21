@@ -51,10 +51,13 @@ class Menu:
 
     def display(self):
         # pygame.draw.rect(self.display_surface, 'red', self.rect)
-        pygame.draw.rect(self.display_surface, 'yellow', self.tile_button_rect)
-        pygame.draw.rect(self.display_surface, 'blue', self.coin_button_rect)
-        pygame.draw.rect(self.display_surface, 'brown', self.enemy_button_rect)
-        pygame.draw.rect(self.display_surface, 'purple', self.palm_button_rect)
+        # pygame.draw.rect(self.display_surface, 'yellow', self.tile_button_rect)
+        # pygame.draw.rect(self.display_surface, 'blue', self.coin_button_rect)
+        # pygame.draw.rect(self.display_surface, 'brown', self.enemy_button_rect)
+        # pygame.draw.rect(self.display_surface, 'purple', self.palm_button_rect)
+
+        self.buttons.update()
+        self.buttons.draw(self.display_surface)
 
 class Button(pygame.sprite.Sprite):
     def __init__(self, rect, group, items, items_alt = None):
@@ -66,3 +69,9 @@ class Button(pygame.sprite.Sprite):
         self.items = {'main': items, 'alt': items_alt}
         self.index = 0
         self.main_active = True
+
+    def update(self):
+        self.image.fill(BUTTON_BG_COLOR)
+        surf = self.items['main'][self.index][1]
+        rect = surf.get_rect(center = (self.rect.width / 2, self.rect.height / 2))
+        self.image.blit(surf, rect)
