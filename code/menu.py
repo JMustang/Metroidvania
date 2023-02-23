@@ -17,10 +17,6 @@ class Menu:
                 else:
                     self.menu_surfs[value['menu']].append((key, load(value['menu_surf'])))
 
-
-
-
-
     def create_button(self):
 
         # menu area
@@ -48,6 +44,12 @@ class Menu:
         Button(self.enemy_button_rect, self.buttons, self.menu_surfs['enemy'])
         Button(self.palm_button_rect, self.buttons, self.menu_surfs['palm fg'], self.menu_surfs['palm bg'])
 
+    def click(self, mouse_pos, mouse_button):
+        for sprite in self.buttons:
+            if sprite.rect.collidepoint(mouse_pos):
+                if mouse_button[1]:
+
+                if mouse_button[2]:
 
     def display(self):
         # pygame.draw.rect(self.display_surface, 'red', self.rect)
