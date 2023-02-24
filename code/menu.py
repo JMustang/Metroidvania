@@ -56,9 +56,24 @@ class Menu:
 
                 return sprite.get_id()
 
-    def display(self):
+    def highlight_indicator(self, index):
+        if EDITOR_DATA[index]['menu'] == 'terrain':
+            pygame.draw.rect(self.display_surface, BUTTON_BG_COLOR, self.tile_button_rect.inflate(4,4),5,4)
+
+
+        if EDITOR_DATA[index]['menu'] == 'coin':
+            pygame.draw.rect(self.display_surface, BUTTON_BG_COLOR, self.coin_button_rect.inflate(4, 4), 5, 4)
+
+        if EDITOR_DATA[index]['menu'] == 'enemy':
+            pygame.draw.rect(self.display_surface, BUTTON_BG_COLOR, self.enemy_button_rect.inflate(4, 4), 5, 4)
+
+        if EDITOR_DATA[index]['menu'] in ('palm bg', 'palm fg'):
+            pygame.draw.rect(self.display_surface, BUTTON_BG_COLOR, self.palm_button_rect.inflate(4, 4), 5, 4)
+
+    def display(self, index):
         self.buttons.update()
         self.buttons.draw(self.display_surface)
+        self.highlight_indicator(index)
 
 class Button(pygame.sprite.Sprite):
     def __init__(self, rect, group, items, items_alt = None):

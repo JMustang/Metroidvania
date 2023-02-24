@@ -99,7 +99,7 @@ class Editor:
         self.event_loop()
 
         # Drawing
-        self.display_surface.fill('white')
+        self.display_surface.fill('gray')
         self.draw_tile_lines()
         pygame.draw.circle(self.display_surface, 'green', self.origin, 10)
-        self.menu.display()
+        self.menu.display(self.selection_index)
