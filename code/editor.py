@@ -29,6 +29,8 @@ class Editor:
         # Menu
         self.menu = Menu()
 
+    def get_current_cell(self):
+        distance_to_origin = vector(mouse_pos()) - self.origin
 
     # INPUT SECTION
     def event_loop(self):
@@ -41,6 +43,7 @@ class Editor:
             self.pan_input(event)
             self.selection_hotkeys(event)
             self.menu_click(event)
+            self.canvas_add()
 
     def pan_input(self, event):
         # Middle mouse button presses / released
@@ -73,6 +76,10 @@ class Editor:
     def menu_click(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN and self.menu.rect.collidepoint(mouse_pos()):
             self.selection_index = self.menu.click(mouse_pos(), mouse_buttons())
+
+    def canvas_add(self):
+        if mouse_buttons()[0] and not self.menu.rect.collidepoint(mouse_pos()):
+            self.get_current_cell()
 
     def draw_tile_lines(self):
         cols = WINDOW_WIDTH // TILE_SIZE

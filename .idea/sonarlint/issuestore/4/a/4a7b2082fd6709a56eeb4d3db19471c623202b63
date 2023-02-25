@@ -1,0 +1,6 @@
+
+Lpython:S10663"/Merge this if statement with the enclosing one.(å™å™ûÿÿÿÿ
+dpython:S2208"GImport only needed names or import the module and then use its members.(Øå®×ûÿÿÿÿ
+Epython:S1940"-Use the opposite operator ("not in") instead.(¥…ï
+opython:S117"XRename this local variable "topLeft" to match the regular expression ^[_a-z][a-z0-9_]*$.(†±ù°
+apython:S3358^"IExtract this nested conditional expression into an independent statement.(»ÚÈ„
